@@ -1,7 +1,7 @@
 class RecipesController < ApplicationController
   before_action :set_recipe, only: [:show, :edit, :update, :destroy]
   before_action :set_title
-
+  before_action :get_categories, :only => [:new, :edit, :create, :update]
   def set_title
     @title = "Recipies"
   end
@@ -20,10 +20,12 @@ class RecipesController < ApplicationController
   # GET /recipes/new
   def new
     @recipe = Recipe.new
+    @categories = Category.all.collect{|c| [c.name, c.id] }
   end
 
   # GET /recipes/1/edit
   def edit
+    @categories = Category.all.collect{|c| [c.name, c.id] }
   end
 
   # POST /recipes
@@ -69,11 +71,17 @@ class RecipesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_recipe
-      @recipe = Recipe.find(params[:id])
+      @recipe = Recipe.includes(:category).find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def recipe_params
-      params.require(:recipe).permit(:title, :ingredients, :instructions)
+      params.require(:recipe).permit(:title, :ingredients, :instructions, :category_id)
     end
+  
+  def get_categories
+    @categories = Category.all.collect{ |c| [c.name, c.id] }
+  end  
+  
 end
+
