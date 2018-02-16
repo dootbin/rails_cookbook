@@ -20,9 +20,9 @@
         <td><%= recipe.ingredients %></td>
         <td><%= recipe.instructions %></td>
         <td><%= time_ago_in_words(recipe.updated_at) %> ago</td>
-        <td><%= link_to 'Show', recipe %></td>
-        <td><%= link_to 'Edit', edit_recipe_path(recipe) %></td>
-        <td><%= link_to 'Destroy', recipe, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= button_to 'Show', recipe %></td>
+        <td><%= button_to 'Edit', edit_recipe_path(recipe) %></td>
+        <td><%= button_to 'Destroy', recipe, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
