@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :recipes
-
+  resources :categoires
   get "/about", controller: 'home', action: 'about', as: 'about'
   root controller: 'home', action: 'index'
   get "home/about"
