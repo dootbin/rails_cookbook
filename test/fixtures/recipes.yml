@@ -4,8 +4,20 @@ one:
   title: "Ice Cream" 
   ingredients: "3 scoops vanilla ice cream, chocolate syrup" 
   instructions: "Scoop ice cream into the bowl and pour chocolate syrup on top." 
-
+  category_id: "1"
 two:
   title: "Toast" 
   ingredients: "bread, butter, jelly"
   instructions: "Place bread in the toaster for 1 minute. Remove from toaster and apply butter to each piece." 
+  category_id: "1"
+three:
+  title: "Green Eggs and Ham"
+  ingredients: "12 green eggs, butter, ham"
+  instructions: "Place green eggs and ham in pot and boil, serve after hot"
+  category_id: "1"
+
+four:
+  title: "Hot Dog"
+  ingredients: "hot dog"
+  instructions: "eat"
+  category_id: "2"
