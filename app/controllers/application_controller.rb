@@ -9,6 +9,12 @@ class ApplicationController < ActionController::Base
     @title = "cookbook"
   end 
 
+  helper_method :logged_in? 
+
+  def logged_in?
+    session[:logged_in]
+  end
+
   private
 
     def authenticate
