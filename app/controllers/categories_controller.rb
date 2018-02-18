@@ -1,7 +1,6 @@
 class CategoriesController < ApplicationController
   before_action :set_category, only: [:show, :edit, :update, :destroy]
   before_action :set_title
-  before_action :get_categories, :only => [:new, :edit, :create, :update]
   def set_title
     @title = "Categories"
   end
@@ -15,6 +14,7 @@ class CategoriesController < ApplicationController
   # GET /categories/1
   # GET /categories/1.json
   def show
+    @recipes = @category.recipes
   end
 
   # GET /category/new
@@ -32,7 +32,7 @@ class CategoriesController < ApplicationController
     @category = Category.new(category_params)
 
     respond_to do |format|
-      if @recipe.save
+      if @category.save
         format.html { redirect_to @category, notice: 'Category was successfully created.' }
         format.json { render :show, status: :created, location: @category }
       else
@@ -46,7 +46,7 @@ class CategoriesController < ApplicationController
   # PATCH/PUT /categories/1.json
   def update
     respond_to do |format|
-      if @categories.update(category_params)
+      if @category.update(category_params)
         format.html { redirect_to @category, notice: 'Category was successfully updated.' }
         format.json { render :show, status: :ok, location: @category }
       else
@@ -69,12 +69,12 @@ class CategoriesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_category
-      @category = Category.includes(:recipe).find(params[:id])
+      @category = Category.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def category_params
-      params.require(:category).permit(:name, :id)
+      params.require(:category).permit(:id, :name)
     end
   
   def get_recipes
