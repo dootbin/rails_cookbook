@@ -2,6 +2,8 @@ class RecipesController < ApplicationController
   before_action :set_recipe, only: [:show, :edit, :update, :destroy]
   before_action :set_title
   before_action :get_categories, :only => [:new, :edit, :create, :update]
+  before_action :authenticate, :except => [:index, :show]
+
   def set_title
     @title = "Recipies"
   end
