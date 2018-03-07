@@ -4,12 +4,12 @@ $errorColor: #c00;
 $hoverColor: #999;
 $navColor: #ccc;
 $textColor: #333;
-$width: 960
+$width: 960;
 
 body{
   background-color: $backgroundColor;
   color: $textColor;
-};
+}
 
 .container{
   background-color: $contentBackgroundColor;
