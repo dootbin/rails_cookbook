@@ -34,7 +34,7 @@ class RecipeTest < ActiveSupport::TestCase
   end
 
   test "should find match on title" do
-    test_recipe = Tecipe.create(title: "Cake",
+    test_recipe = Recipe.create(title: "Cake",
                                 ingredients: "Flour, sugar, eggs.",
                                 instructions: "Mix ingredients... dot dot dot")
     assert_equal test_recipe, Recipe.find_all_by_Query("cake").first
