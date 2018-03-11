@@ -42,9 +42,15 @@ class RecipeTest < ActiveSupport::TestCase
 
 
   test "should find 2 matches on title" do
+    Recipe.create!(title: "Pancakes",
+                  ingredients: "flour, butter, eggs",
+                  instructions: "Mix ingredients in a large bowl ... .")
+    
     Recipe.create!(title: "Cake",
                    ingredients: "Flour, sugar, eggs.",
                    instructions: "Mix ingredients .. - dot dot dash")
+    
     assert_equal 2, Recipe.find_all_by_query("cake").count
+
   end
 end
