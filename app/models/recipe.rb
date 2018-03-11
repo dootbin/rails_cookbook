@@ -7,7 +7,10 @@ class Recipe < ActiveRecord::Base
     query = query.downcase
     query = "%#{query}%"
 
-    Recipe.where(['lower(title) like ? ', query])
+    Recipe.where(['lower(title) like ? 
+                  OR lower(ingredients) like ?
+                  OR lower(instructions) like ?',
+                  query, query, query])
   end
 
 end
