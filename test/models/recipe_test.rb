@@ -39,4 +39,11 @@ class RecipeTest < ActiveSupport::TestCase
                                 instructions: "Mix ingredients... dot dot dot")
     assert_equal test_recipe, Recipe.find_all_by_query("cake").first
   end
+
+
+  test "should find 2 matches on title" do
+    Recipe.create!(title: "Cake",
+                   ingredients: "Flour, sugar, eggs.",
+                   instructions: "Mix ingredients .. - dot dot dash")
+    assert_equal 2, Recipe.find_all_by_query("cake").count
 end
