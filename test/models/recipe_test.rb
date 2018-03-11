@@ -46,4 +46,5 @@ class RecipeTest < ActiveSupport::TestCase
                    ingredients: "Flour, sugar, eggs.",
                    instructions: "Mix ingredients .. - dot dot dash")
     assert_equal 2, Recipe.find_all_by_query("cake").count
+  end
 end
