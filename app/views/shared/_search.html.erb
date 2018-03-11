@@ -1,5 +1,6 @@
 <%= form_tag recipes_url, method: :get do %>
   <label for="query">Keywords: </label>
   <input type="search" id="query" name="q" value="<%= params[:q] %>">
+  <%= select("get", "category", Category.all.collect {|f| [f.name]}, {include_blank: "None"}) %>
   <input type="submit" vaule="Search">
 <% end %>
