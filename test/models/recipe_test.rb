@@ -53,4 +53,19 @@ class RecipeTest < ActiveSupport::TestCase
     assert_equal 2, Recipe.find_all_by_query("cake").count
 
   end
+
+  test "should find a match on ingredients" do 
+    test_recipe = Recipe.create(title: "Cake",
+                                ingredients: "Flour, sugar, eggs.",
+                                instructions: "Mix ingredients...")
+    assert_equal test_recipe, Recipe.find_all_by_query("flour").first
+  end
+
+  test "should find a match on instructions" do
+    test_recipe = Recipe.create(title: "Cake",
+                                ingredients: "Flour, sugar, eggs.",
+                                instructions: "Mix ingredients...")
+
+    assert_equal test_recipe, Recipe.find_all_by_query("mix").first
+  end
 end
